@@ -57,6 +57,9 @@
         bool exit = false;
         while (!exit)
         {
+            hunger++;
+            happiness--;
+
             Console.WriteLine("\nMain Menu:");
             Console.WriteLine("1. Feed Pet");
             Console.WriteLine("2. Play with pet");
@@ -69,9 +72,9 @@
 
             if (choice == "1")
             {
-                hunger = 2;
-                happiness = 7;
-                health = 8;
+                hunger = hunger - 1;
+                happiness = happiness + 1;
+                health = health + 1;
                 Console.WriteLine(petName, "'s Status");
                 Console.Write("\n");
                 Console.WriteLine("Happiness: " + happiness);
@@ -81,8 +84,8 @@
             }
             else if (choice == "2")
             {
-                happiness = 9;
-                hunger = 9;
+                happiness = happiness + 1;
+                hunger = hunger + 1;
                 Console.WriteLine(petName, "'s Status");
                 Console.Write("\n");
                 Console.WriteLine("Happiness: " + happiness);
@@ -92,9 +95,9 @@
             }
             else if (choice == "3")
             {
-                health = 8;
-                hunger = 7;
-                happiness = 3;
+                health = health + 1;
+                hunger = hunger + 1;
+                happiness = happiness - 1;
                 Console.WriteLine(petName, "'s Status");
                 Console.Write("\n");
                 Console.WriteLine("Happiness: " + happiness);
@@ -106,7 +109,7 @@
             {
                 Console.WriteLine();
                 Console.WriteLine(petName + "'s Current Status: \n");
-                Console.WriteLine("Hunger = " + hunger + "\nHappiness: " + happiness + "\nHealth: " + health);
+                Console.WriteLine("Happiness: " + happiness + "\nHunger = " + hunger + "\nHealth: " + health);
             }
 
             else if (choice == "5")
@@ -119,6 +122,22 @@
             {
                 Console.WriteLine("Invalid Choice Try Again");
                 Console.Clear();
+            }
+
+            if (hunger <= 2)
+            {
+                Console.WriteLine("Warning: Hunger is critically low!");
+                health--;
+            }
+            if (happiness <= 3)
+            {
+                Console.WriteLine("Warning: Happiness is critically low!");
+                health--;
+            }
+            if (health <= 0)
+            {
+                Console.WriteLine("Your pet has become unwell due to neglect. Game Over!");
+                Environment.Exit(0);
             }
         }   
 
