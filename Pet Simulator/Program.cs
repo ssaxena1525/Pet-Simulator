@@ -59,6 +59,7 @@
         {
             hunger++;
             happiness--;
+            health--;
 
             Console.WriteLine("\nMain Menu:");
             Console.WriteLine("1. Feed Pet");
@@ -72,7 +73,7 @@
 
             if (choice == "1")
             {
-                hunger = hunger - 1;
+                hunger = hunger - 2;
                 happiness = happiness + 1;
                 health = health + 1;
                 Console.WriteLine(petName, "'s Status");
@@ -84,7 +85,7 @@
             }
             else if (choice == "2")
             {
-                happiness = happiness + 1;
+                happiness = happiness + 2;
                 hunger = hunger + 1;
                 Console.WriteLine(petName, "'s Status");
                 Console.Write("\n");
